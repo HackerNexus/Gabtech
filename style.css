@@ -1,0 +1,145 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20;
+  padding: 0;
+  background: rgb(25, 100, 2);
+  color: black;
+  .large-text {
+  font-size: 20px;}
+   container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background: skyblue;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      margin-top: 20px;}
+
+}
+  header {
+      background-color: skyblue;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      display: inline-block;
+    }
+.logo {
+  width: 400px;
+  margin-top: 5px;
+  margin-left: 5px;
+  height: 300px;
+}
+section {
+  padding: 2em;
+  background: yellow;
+  margin: 1em;
+  border-radius: 8px;
+  .large-text {
+  font-size: 50px;
+}
+
+  color: black;
+}
+h1{color: black;}
+h2 {
+  color: royalblue;
+}
+ul {
+  list-style-type: square;
+  padding-left: 20px;
+}
+.gallery {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.gallery figure {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  flex-grow: 1;
+  flex: 11 calc(33.333%-10px);
+  box-sizing: border-box;
+}
+.gallery img {
+  width: 100%;
+  border-radius: 4px;
+}
+.gallery figcaption {
+  text-align: center;
+  margin-top: 0.5em;
+}
+.social-links a {
+  margin-right: 5px;
+}
+footer {
+  background: slateblue;
+  color: black;
+  text-align: center;
+  padding: 1em 0;
+  margin-top: 2em;
+}
+nav button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #020080;
+  color: white;
+  border: red;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-block;
+}
+.nav button:hover {
+  background-color: #0066cc;
+}
+.social-btn :hover{
+  background-color: white;
+}
+
+.facebook { background-color: #3b5998; }
+.instagram {background-color: blueviolet;}
+.x{ background-color: #1da1f2; }
+.whatsapp { background-color: #25d366; }
+.email { background-color: #6c757d; }
+.social-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 6px;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.social-btn i {
+  margin-right: 8px;
+}
+.social-btn:hover{
+  background-color: blueviolet;
+}
+.contact-icons
+  .fa-phone {color: #25d366;}
+  .fa-map-marker-alt{color: red;}
+  .fa-clock {color: #020080;}
+  .fa-whatsapp {color: green;}
+  .fa-envelope {color: gray;
+  }
+  @media screen and (max-width: 600px) {
+  .gallery { flex-direction: column; }
+  nav button { width: 100%; margin-bottom: 10px; }
+}
+.review-card {
+  border: 1px solid #ccc;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+
