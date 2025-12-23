@@ -130,7 +130,12 @@ nav button {
   font-weight: bold;
   font-size: 16px;
 }
-
+.submit button :{
+  display: inline-block;
+  color: blue;
+  font-weight: bold;
+  font-size: 15px;
+}
 .social-btn i {
   margin-right: 8px;
 }
@@ -155,22 +160,14 @@ nav button {
   border-radius: 8px;
   background-color: #f9f9f9;
 }
+  .text area{
+    height: 500;
+  }
 
 </style>
 <body>
   <body>
-   <div id="thank-you-message" style="
-    display: none; 
-    position: fixed; 
-    top: 20px; 
-    right: 20px; 
-    background-color: #28a745; 
-    color: white; 
-    padding: 15px 25px; 
-    border-radius: 8px; 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    z-index: 1000;
-    font-family: sans-serif;">
+   <div id="thank-you-message" style="display: none; position: fixed; top: 20px; right: 20px; background-color: #dc3545; color: white; padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 1000;">
     ✅ Thank you! Your review has been submitted.
 </div>
     <div id="error-toast" style="display: none; position: fixed; top: 20px; right: 20px; background-color: #dc3545; color: white; padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 1000;">
@@ -191,12 +188,13 @@ nav button {
   <h1 style="color:white;">Connecting Kenya Through Technology</h1><br>
   <p style="color:white;">We bring Internet, ICT and CCTV solutions to your doorstep</p>
 </section> 
+    <section>
    <nav>
-    <button onclick="location.href='home.html'">Home</button>
-    <button onclick="location.href='about.html'">About</button>
+    <button onclick="location.href='home.html'">Home</button><br>
+    <button onclick="location.href='about.html'">About</button><br>
     <button onclick="location.href='services.html'">Services</button>
    </nav>
-    
+    </section>
 <section id="why-choose-us">
   <h2>Why Choose Us?</h2>
   <ul>
@@ -271,20 +269,12 @@ nav button {
       </figure>
     </div>
   </section>
-  
- <section id="feedback-section">
-    <h2>Leave a Review</h2>
-    <form id="my-form" action="https://formspree.io/f/xqezwpap" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required><br>
-        <input type="email" name="email" placeholder="Your Email" required><br>
-        <textarea name="message" placeholder="Your Feedback" required></textarea><br>
-        <button id="my-form-button" type="submit">Submit Feedback</button>
-        <p id="my-form-status"></p>
-    </form>
-</section>
+    
 <section>
 <form id="feedback-form" action="https://formspree.io/f/xqezwpap" method="POST">
     <input type="text" name="name" placeholder="Your Name" required><br>
+    <input type="number" name= "Phone Number" placeholder="your phone number><br>
+    <input type="email" name="email" placeholder="Your Email" required><br>
     <textarea name="message" placeholder="Your Feedback" required></textarea><br>
     <button type="submit">Submit Feedback</button>
 </form>
@@ -295,18 +285,23 @@ nav button {
     const errorToast = document.getElementById("error-toast");
 
     // Function to show and then hide a message
-    function showNotification(element) {
-        element.style.display = "block";
-        element.style.opacity = "1";
+   const urlParams = new URLSearchParams(window.location.search);
+    const msgBox = document.getElementById('thank-you-message');
 
+    if (urlParams.get('success') === '1') {
+        // 1. Show the message
+        msgBox.style.display = 'block';
+
+        // 2. Wait 4 seconds (4000ms), then hide it
         setTimeout(() => {
-            element.style.transition = "opacity 1s";
-            element.style.opacity = "0";
+            msgBox.style.transition = "opacity 1s"; // Add a smooth fade-out effect
+            msgBox.style.opacity = "0";
+            
+            // 3. Fully remove it from layout after the fade finishes
             setTimeout(() => {
-                element.style.display = "none";
-                element.style.transition = ""; // Reset transition
+                msgBox.style.display = 'none';
             }, 1000);
-        }, 4000); // Shows for 4 seconds
+        }, 4000); 
     }
 
     form.addEventListener("submit", async (event) => {
@@ -356,6 +351,5 @@ nav button {
   <footer>
     <p><b>&copy; 2025 Gab Technologies. All rights reserved.</p></b>
     <p><b><i>Created by <a href="Muthusi.html" target="_blank"/> Emmanuel Muthusi</a></p></footer></i></b>
-  </footer>
 </body>
 </html>
