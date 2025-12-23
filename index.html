@@ -159,12 +159,23 @@ nav button {
 </style>
 <body>
   <body>
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('success') === '1') {
-            alert("✅ Thank you! Your review has been submitted.");
-        }
-    </script>
+   <div id="thank-you-message" style="
+    display: none; 
+    position: fixed; 
+    top: 20px; 
+    right: 20px; 
+    background-color: #28a745; 
+    color: white; 
+    padding: 15px 25px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 1000;
+    font-family: sans-serif;">
+    ✅ Thank you! Your review has been submitted.
+</div>
+    <div id="error-toast" style="display: none; position: fixed; top: 20px; right: 20px; background-color: #dc3545; color: white; padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 1000;">
+    ❌ Sorry, there was a problem submitting your review.
+</div>
 
     <!-- website content continues below -->
 
@@ -271,34 +282,56 @@ nav button {
         <p id="my-form-status"></p>
     </form>
 </section>
+<section>
+<form id="feedback-form" action="https://formspree.io/f/xqezwpap" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required><br>
+    <textarea name="message" placeholder="Your Feedback" required></textarea><br>
+    <button type="submit">Submit Feedback</button>
+</form>
 
 <script>
-    var form = document.getElementById("my-form");
-    
-    async function handleSubmit(event) {
-      event.preventDefault();
-      var status = document.getElementById("my-form-status");
-      var data = new FormData(event.target);
-      fetch(event.target.action, {
-        method: form.method,
-        body: data,
-        headers: {
-            'Accept': 'application/json'
-        }
-      }).then(response => {
-        if (response.ok) {
-          status.innerHTML = "Thanks for your feedback!";
-          form.reset();
-        } else {
-          status.innerHTML = "Oops! There was a problem submitting your form";
-        }
-      }).catch(error => {
-        status.innerHTML = "Oops! There was a problem submitting your form";
-      });
-    }
-    form.addEventListener("submit", handleSubmit);
-</script>
+    const form = document.getElementById("feedback-form");
+    const successToast = document.getElementById("success-toast");
+    const errorToast = document.getElementById("error-toast");
 
+    // Function to show and then hide a message
+    function showNotification(element) {
+        element.style.display = "block";
+        element.style.opacity = "1";
+
+        setTimeout(() => {
+            element.style.transition = "opacity 1s";
+            element.style.opacity = "0";
+            setTimeout(() => {
+                element.style.display = "none";
+                element.style.transition = ""; // Reset transition
+            }, 1000);
+        }, 4000); // Shows for 4 seconds
+    }
+
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault(); // Stop the page from refreshing
+        const data = new FormData(event.target);
+
+        try {
+            const response = await fetch(event.target.action, {
+                method: 'POST',
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                showNotification(successToast);
+                form.reset(); // Clear the form fields
+            } else {
+                showNotification(errorToast);
+            }
+        } catch (error) {
+            showNotification(errorToast);
+        }
+    });
+</script>
+  </section>
     <section id="Follow us">
       <h2>Connect with Us</h2>
       <p>Follow us on our social media platforms today</p>
