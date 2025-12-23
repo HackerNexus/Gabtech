@@ -130,12 +130,6 @@ nav button {
   font-weight: bold;
   font-size: 16px;
 }
-.submit button :{
-  display: inline-block;
-  color: blue;
-  font-weight: bold;
-  font-size: 15px;
-}
 .social-btn i {
   margin-right: 8px;
 }
@@ -160,9 +154,6 @@ nav button {
   border-radius: 8px;
   background-color: #f9f9f9;
 }
-  .text area{
-    height: 500;
-  }
 
 </style>
 <body>
@@ -271,6 +262,43 @@ nav button {
   </section>
     
 <section>
+  <h2>Leave us a Feedback</h2>
+  <style>
+    /* 1. Spacing and Borders for the Input boxes */
+    .feedback-input {
+        display: block;      /* Puts each box on a new line */
+        width: 100%;         /* Makes them fill the container width */
+        max-width: 400px;    /* Prevents them from getting too wide */
+        margin-bottom: 15px; /* Adds the space between them */
+        padding: 10px;       /* Adds space inside the box for text */
+        border: 3px solid #333; /* Makes the borders "heavier" */
+        border-radius: 5px;  /* Slightly rounds the corners */
+        font-size: 16px;
+    }
+
+    /* 2. Making the Feedback area bigger */
+    textarea.feedback-input {
+        height: 150px;       /* Sets a larger height */
+        resize: vertical;    /* Allows the user to pull it down further */
+    }
+
+    /* 3. Making the Button Blue */
+    .submit-btn {
+        background-color: #007bff; /* Professional Blue */
+        color: white;              /* White text */
+        padding: 12px 25px;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+    .submit-btn:hover {
+        background-color: #0056b3; /* Darker blue when hovering */
+    }
+</style>
 <form id="feedback-form" action="https://formspree.io/f/xqezwpap" method="POST">
     <input type="text" name="name" placeholder="Your Name" required><br>
     <input type="number" name= "Phone Number" placeholder="your phone number><br>
